@@ -9,6 +9,8 @@
 #define XON 0x11
 #define XOFF 0x13
 
+#define RESET_SLAVES_PIN 13
+
 #define NO_ERROR 0
 #define UNEXPECTED_START_BYTE 1
 #define CHECKSUM_FAILURE 2
@@ -51,7 +53,8 @@
 #define ASYNC_NODE_METHOD 15   // nodo-> gateway 
 //TOD
 #define TOD_METHOD 11 // node -> gateway
-
+// UTILS METHOS
+#define RESET_SLAVES 128 // reset slaves
 
 /* STRUCTURES */
 
@@ -80,5 +83,5 @@ void checkNewUART1AndSendOne();
 void checkNewUART2AndSendOne();
 void checkNewUART3AndSendOne();
 void checkNewZigbeeAndSendOne();
-
+void resetSlaves();
 #endif

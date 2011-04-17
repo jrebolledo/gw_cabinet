@@ -14,6 +14,9 @@ int count;
 int enabled;
 unsigned long time_last_sendXbee; 
 
+int _reset_slaves_pin = RESET_SLAVES_PIN;
+
+
 XBee xbee = XBee();
 XBeeResponse response = XBeeResponse();
 ZBRxResponse rx = ZBRxResponse();
@@ -38,7 +41,11 @@ void setup() {
   TIMSK2 |= (1 << TOIE2);
   RESET_TIMER2;
   sei();
-  pinMode(13,OUTPUT);
+
+  pinMode(_reset_slaves_pin,OUTPUT);
+
+  digitalWrite(_reset_slaves_pin,true);
+  
   Serial3.println("Comenzando");						//Envia el ToD para que el Gateway lo registre como conectado
 //  bufferOut[0].Estado = PARA_ENVIAR_XBEE;
 //  bufferOut[0].Turno = 0;

@@ -17,7 +17,7 @@ extern boolean dead;
 extern byte payload[75];
 extern byte posOverFlow;
 extern unsigned long time_last_sendXbee; 
-
+extern int _reset_slaves_pin;
 
 ////////////////////////////////////////////////////////////////
 ////////////////////// Comunicacion  ///////////////////////////
@@ -84,7 +84,14 @@ boolean receiveXbee() {
           }
           bufferIn.len_params = rx.getDataLength()-2; // No se cuenta el Method ni ID
           bufferIn.Id = rx.getData(rx.getDataLength()-1); // El ultimo dato es el Id
-          saveInBufferOut();
+          if (bufferIn.Method == RESET_SLAVES){
+            resetSlaves();
+          }
+          else {
+            saveInBufferOut();
+          }
+          
+            
       } else {
           // we got it (obviously) but sender didn't get an ACK
       }
@@ -440,4 +447,10 @@ void printBuffer(boolean isoutbuffer, byte index) {
       Serial3.print("\tId:");Serial3.println(bufferIn.Id,DEC);    
     }
   #endif
+}
+
+void resetSlaves() {
+  digitalWrite(_reset_slaves_pin,false);
+  delay(500);
+  digitalWrite(_reset_slaves_pin,true);
 }
