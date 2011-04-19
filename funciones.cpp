@@ -141,6 +141,7 @@ void defineEstado(){
     case RELE_REGLA_CONTROL_METHOD:
     case RELE_MEDICON_REFRESH_METHOD:
     case RELE_UPDATE_DATETIME_METHOD:
+    case RELE_MEDICION_SENSORES_METHOD:
     case RELE_CLEAN_EEPROM_METHOD:
       bufferIn.Estado = PARA_ENVIAR_SERIAL2;
       #if (DEBUG)
@@ -170,6 +171,7 @@ void saveInBufferOut(){
         }
       }
       break;
+
     case RELE_MEDICON_REFRESH_METHOD:
     case MAXQ_UPDATE_DATETIME_METHOD:
       for(int i = 0; i < TAMANO_MAX_BUFFEROUT; i++){
