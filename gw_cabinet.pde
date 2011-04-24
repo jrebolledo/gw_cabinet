@@ -21,7 +21,7 @@ XBee xbee = XBee();
 XBeeResponse response = XBeeResponse();
 ZBRxResponse rx = ZBRxResponse();
 ModemStatusResponse msr = ModemStatusResponse();
-XBeeAddress64 addr64 = XBeeAddress64(0x0013a200, 0x40600de1);			//Reemplazar con direccion del Gateway
+XBeeAddress64 addr64 = XBeeAddress64(0,0);			//Reemplazar con direccion del Gateway
 ZBTxRequest zbTx = ZBTxRequest(addr64, payload, sizeof(payload));
 ZBTxStatusResponse txStatus = ZBTxStatusResponse();
 
