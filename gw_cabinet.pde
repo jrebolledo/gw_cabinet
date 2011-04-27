@@ -13,7 +13,7 @@ int dead;
 int count;
 int enabled;
 unsigned long time_last_sendXbee; 
-
+boolean reset_booting = false;
 int _reset_slaves_pin = RESET_SLAVES_PIN;
 
 
@@ -42,9 +42,6 @@ void setup() {
   RESET_TIMER2;
   sei();
 
-  pinMode(_reset_slaves_pin,OUTPUT);
-
-  digitalWrite(_reset_slaves_pin,true);
   
   Serial3.println("Comenzando");						//Envia el ToD para que el Gateway lo registre como conectado
 //  bufferOut[0].Estado = PARA_ENVIAR_XBEE;
@@ -62,6 +59,7 @@ void setup() {
 
 
 void loop() {
+  resetInit();
   //backupData(); // save all structure data ones a day
   checkNewZigbeeAndSendOne();
   checkNewUART1AndSendOne();  

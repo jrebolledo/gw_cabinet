@@ -84,4 +84,5 @@ void checkNewUART2AndSendOne();
 void checkNewUART3AndSendOne();
 void checkNewZigbeeAndSendOne();
 void resetSlaves();
+void resetInit();
 #endif

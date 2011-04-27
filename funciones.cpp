@@ -18,10 +18,21 @@ extern byte payload[75];
 extern byte posOverFlow;
 extern unsigned long time_last_sendXbee; 
 extern int _reset_slaves_pin;
+extern boolean reset_booting;
 
 ////////////////////////////////////////////////////////////////
 ////////////////////// Comunicacion  ///////////////////////////
 ////////////////////////////////////////////////////////////////
+void resetInit() {
+  if (!reset_booting) {
+      int reset_io = 38;
+      delay(3000);
+      pinMode(reset_io,OUTPUT);
+      digitalWrite(reset_io,true);
+      reset_booting = true;
+
+  }
+}
 
 boolean sendXbee()
 {
